@@ -1,0 +1,583 @@
+#index:
+#    path: /
+#    controller: App\Controller\DefaultController::index
+api_login_check:
+  path: /api/login_check
+
+apprenant_liste:
+  path: api/admin/apprenants
+  methods: ['GET']
+  defaults:
+    _controller: App\Controller\ApprenantController::listerApprenant
+    _api_resource_class: App\Entity\User
+    _api_collection_operation_name: get_apprenants
+
+ajouter_apprenant:
+  path: /api/ajouterApprenant
+  methods: ['POST']
+  defaults:
+    _controller: App\Controller\ApprenantController::ajouterApprenant
+    _api_resource_class: App\Entity\User
+    _api_collection_operation_name: post_ajouterApprenant
+
+supprimerUser:
+  path: /api/supprimerUser/{id}
+  methods: ['DELETE']
+  defaults:
+    _controller: App\Controller\ApprenantController::supprimerUser
+    _api_resource_class: App\Entity\User
+    _api_item_operation_name: delete_supprimerUser
+
+modifierApprenant:
+  path: /api/modifierApprenant/{id}
+  methods: ['PUT']
+  defaults:
+    _controller: App\Controller\ApprenantController::modifierApprenant
+    _api_resource_class: App\Entity\User
+    _api_item_operation_name: put_modifierApprenant
+
+apprenant_liste_one:
+  path: /api/apprenant/{id}
+  methods: ['GET']
+  defaults:
+    _controller: App\Controller\ApprenantController::findApprenant
+    _api_resource_class: App\Entity\User
+    _api_item_operation_name: get_apprenant
+
+formateur_liste:
+  path: /api/formateurs
+  methods: ['GET']
+  defaults:
+    _controller: App\Controller\FormateurController::listerFormateur
+    _api_resource_class: App\Entity\User
+    _api_collection_operation_name: get_formateurs
+
+formateur_liste_one:
+  path: /api/formateur/{id}
+  methods: ['GET']
+  defaults:
+    _controller: App\Controller\FormateurController::findFormateur
+    _api_resource_class: App\Entity\User
+    _api_item_operation_name: get_formateur
+
+modifierFormateur:
+  path: /api/modifierFormateur/{id}
+  methods: ['PUT']
+  defaults:
+    _controller: App\Controller\FormateurController::modifierFormateur
+    _api_resource_class: App\Entity\User
+    _api_item_operation_name: put_modifierFormateur
+
+groupeCompetence_liste:
+  path: api/admin/grpecompetences
+  methods: ['GET']
+  defaults:
+    _controller: App\Controller\GroupeCompetenceController::listerGroupeCompetence
+    _api_resource_class: App\Entity\GroupeCompetences
+    _api_collection_operation_name: get_groupeCompetence_liste
+groupeTag_liste_Tag:
+  path: api/admin/grptags/{id}/tags
+  methods: ['GET']
+  defaults:
+    _controller: App\Controller\GroupeTagController::groupeTaglisteTag
+    _api_resource_class: App\Entity\GroupeTag
+    _api_collection_operation_name: get_tags_by_liste_tags
+
+groupe_apprenants_show:
+  path: api/admin/groupe/apprenants
+  methods: ['GET']
+  defaults:
+    _controller: App\Controller\GroupeController::groupeApprenantsShow
+    _api_resource_class: App\Entity\Groupe
+    _api_collection_operation_name: groupe_pprenants_liste_show
+
+remove_apprenant_groupe:
+  path: api/admin/groupes/{id}/apprenants/{idApprenant}
+  methods: ['DELETE']
+  defaults:
+    _controller: App\Controller\GroupeController::removeApprenantFromGroup
+    _api_resource_class: App\Entity\Groupe
+    _api_item_operation_name: groupe_remove_apprenants
+
+getAppre:
+  path: api/apprenantes/{id}
+  methods: ['GET']
+  defaults:
+    _controller: App\Controller\ApprenantController::getApprenant
+    _api_resource_class: App\Entity\Apprenant
+    _api_collection_operation_name: getOneAppren
+
+groupecompetences_by_referentiel:
+  path: api/admin/referentiels/groupecompetences
+  methods: ['GET']
+  defaults:
+    _controller: App\Controller\ReferentielController::groupecompetencesByReferentiel
+    _api_resource_class: App\Entity\Referentiel
+    _api_collection_operation_name: get_all_groupecompetencesBy_Referentiel
+
+competence_by_grpeCptence:
+  path: api/admin/referentiels/{idRef}/grpecompetences
+  methods: ['GET']
+  defaults:
+    _controller: App\Controller\ReferentielController::getCompetenceBygrpeCptence
+    _api_resource_class: App\Entity\Referentiel
+    _api_collection_operation_name: get_competence_by_grpeCptence
+
+
+groupeCompetence_liste_competces:
+  path: api/admin/grpecompetences/competences
+  methods: ['GET']
+  defaults:
+    _controller: App\Controller\GroupeCompetenceController::listerGroupeCompetenceCompt
+    _api_resource_class: App\Entity\GroupeCompetences
+    _api_collection_operation_name: get_groupeCompetence_liste_cptences
+
+
+
+
+Competence_liste:
+  path: api/admin/competences
+  methods: ['GET']
+  defaults:
+    _controller: App\Controller\CompetenceController::listerCompetence
+    _api_resource_class: App\Entity\Competence
+    _api_collection_operation_name: get_Competence_liste
+
+competence_add:
+  path: api/admin/competences
+  methods: ['POST']
+  defaults:
+    _controller: App\Controller\CompetenceController::addCompetence
+    _api_resource_class: App\Entity\Competence
+    _api_collection_operation_name: postCompetence
+
+
+Competence_One:
+  path: api/admin/competences/{id}
+  methods: ['GET']
+  defaults:
+    _controller: App\Controller\CompetenceController::getOneCompetence
+    _api_resource_class: App\Entity\Competence
+    _api_item_operation_name: get_One_Competence
+
+
+put_Competence:
+  path: api/admin/competences/{id}
+  methods: ['PUT']
+  defaults:
+    _controller: App\Controller\CompetenceController::putCompetence
+    _api_resource_class: App\Entity\Competence
+    _api_item_operation_name: put_One_Competence
+
+
+
+get_groupeCompetenceOne:
+  path: api/admin/grpecompetences/{id}
+  methods: ['GET']
+  defaults:
+    _controller: App\Controller\GroupeCompetenceController::getOneGroupeCompetence
+    _api_resource_class: App\Entity\GroupeCompetences
+    _api_item_operation_name: getOneGroupeCompetence
+
+
+
+get_CompetenceByGrp:
+  path: api/admin/grpecompetences/{id}/competences
+  methods: ['GET']
+  defaults:
+    _controller: App\Controller\GroupeCompetenceController::getCompetenceByGrp
+    _api_resource_class: App\Entity\GroupeCompetences
+    _api_item_operation_name: getCompetenceByGroupeCompetence
+
+
+post_groupeCompetenceCpt:
+  path: api/admin/grpecompetences
+  methods: ['POST']
+  defaults:
+    _controller: App\Controller\GroupeCompetenceController::addGroupeCompetenceCompt
+    _api_resource_class: App\Entity\GroupeCompetences
+    _api_collection_operation_name: post_grpe_cptence
+
+
+put_groupeCompetenceCpt:
+  path: api/admin/grpecompetences/{id}
+  methods: ['PUT']
+  defaults:
+    _controller: App\Controller\GroupeCompetenceController::updateGroupeCompetenceCompt
+    _api_resource_class: App\Entity\GroupeCompetences
+    _api_item_operation_name: put_grpe_cptence
+
+post_GroupeTagsTag:
+  path: api/admin/grptags
+  methods: ['POST']
+  defaults:
+    _controller: App\Controller\GroupeTagController::addGroupeTagsTag
+    _api_resource_class: App\Entity\GroupeTag
+    _api_collection_operation_name: post_GroupeTagsTag
+
+getUtilisateurs:
+  path: api/admin/users
+  methods: ['GET']
+  defaults:
+    _controller: App\Controller\UserController::getUtilisateurs
+    _api_resource_class: App\Entity\User
+    _api_collection_operation_name: getAllUsers
+
+modifier_GroupeTagsTag:
+  path: api/admin/grptags/{id}
+  methods: ['PUT']
+  defaults:
+    _controller: App\Controller\GroupeTagController::updatingGroupeTagsTag
+    _api_resource_class: App\Entity\GroupeTag
+    _api_item_operation_name: update_GroupeTagsTag
+
+
+post_Tag:
+  path: api/admin/tags
+  methods: ['POST']
+  defaults:
+    _controller: App\Controller\TagController::addTag
+    _api_resource_class: App\Entity\Tag
+    _api_collection_operation_name: postTag
+
+put_Tag:
+  path: api/admin/tags/{id}
+  methods: ['PUT']
+  defaults:
+    _controller: App\Controller\TagController::putTag
+    _api_resource_class: App\Entity\Tag
+    _api_item_operation_name: putTag
+
+
+
+
+add_groupe_creer:
+  path: api/admin/groupes
+  methods: ['POST']
+  defaults:
+    _controller: App\Controller\GroupeController::addApprenantInGroup
+    _api_resource_class: App\Entity\Groupe
+    _api_collection_operation_name: post_group_creer
+
+
+
+modifierGroupe:
+  path: api/admin/groupes/{id}
+  methods: ['PUT']
+  defaults:
+    _controller: App\Controller\GroupeController::modifierGroupe
+    _api_resource_class: App\Entity\Groupe
+    _api_item_operation_name: put_groupe
+
+
+add_Promo:
+  path: api/admin/promo
+  methods: ['POST']
+  defaults:
+    _controller: App\Controller\PromoController::index
+    _api_resource_class: App\Entity\Promo
+    _api_collection_operation_name: post_Promo
+
+
+get_Groupe_Principal_promos:
+  path: api/admin/promos/principal
+  methods: ['GET']
+  defaults:
+    _controller: App\Controller\PromoController::getGroupePrincipal
+    _api_resource_class: App\Entity\Promo
+    _api_collection_operation_name: get_Groupe_Principals_promo_apprenants
+
+get_liste_attente_promo:
+  path: api/admin/promo/apprenants/attente
+  methods: ['GET']
+  defaults:
+    _controller: App\Controller\PromoController::listeAttente
+    _api_resource_class: App\Entity\Promo
+    _api_collection_operation_name: get_liste_attente
+
+    get_one_promo_encours:
+      path: api/admin/promo/{id}/encours
+      methods: ['GET']
+      defaults:
+        _controller: App\Controller\PromoController::getOneEncours
+        _api_resource_class: App\Entity\Promo
+        _api_item_operation_name: get_enCoursOne
+
+    get_one_promo_principal:
+      path: api/admin/promo/{id}/principal
+      methods: ['GET']
+      defaults:
+        _controller: App\Controller\PromoController::getOnePrincipal
+        _api_resource_class: App\Entity\Promo
+        _api_item_operation_name: get_One_Principal
+
+    get_one_promo_referentiels:
+      path: api/admin/promo/{id}/referentiels
+      methods: ['GET']
+      defaults:
+        _controller: App\Controller\PromoController::getPromoReferentiel
+        _api_resource_class: App\Entity\Promo
+        _api_item_operation_name: get_Promo_Referentiel
+
+
+    get_Attente_promo_referentiels:
+      path: api/admin/promo/{id}/apprenants/attente
+      methods: ['GET']
+      defaults:
+        _controller: App\Controller\PromoController::getAttentePromoRefe
+        _api_resource_class: App\Entity\Promo
+        _api_item_operation_name: get_Attente_Referentiel
+
+    modifierStatutGroupe:
+      path: api/admin/promo/{id}/groupes/{idG}
+      methods: ['PUT']
+      defaults:
+        _controller: App\Controller\PromoController::modifierStatutGroupe
+        _api_resource_class: App\Entity\Promo
+        _api_item_operation_name: put_statut_groupe
+
+
+    addDeleteApprenant:
+      path: api/admin/promo/{id}/apprenants
+      methods: ['PUT']
+      defaults:
+        _controller: App\Controller\PromoController::addDeleteApprenantPromo
+        _api_resource_class: App\Entity\Promo
+        _api_item_operation_name: putAddDeleteApprenant
+
+
+    addDeleteFormateur:
+      path: api/admin/promo/{id}/formateurs
+      methods: ['PUT']
+      defaults:
+        _controller: App\Controller\PromoController::addDeleteFormateurPromo
+        _api_resource_class: App\Entity\Promo
+        _api_item_operation_name: putAddDeleteFormateur
+
+
+
+    updatePromoRef:
+      path: api/admin/promo/{id}
+      methods: ['PUT']
+      defaults:
+        _controller: App\Controller\PromoController::updatePromoReferentiel
+        _api_resource_class: App\Entity\Promo
+        _api_item_operation_name: putPromoReferent
+
+
+    postReferentiel:
+      path: /api/admin/referentiels
+      methods: ['POST']
+      defaults:
+        _controller: App\Controller\ReferentielController::addReferentiel
+        _api_resource_class: App\Entity\Referentiel
+        _api_collection_operation_name: putPromoReferent
+
+
+    updatingRefer:
+      path: api/admin/referentiels/{id}
+      methods: ['PUT']
+      defaults:
+        _controller: App\Controller\ReferentielController::updatingReferentiel
+        _api_resource_class: App\Entity\Referentiel
+        _api_item_operation_name: putReferModif
+
+
+    getAllGroupes:
+      path: api/admin/groupes
+      methods: ['GET']
+      defaults:
+        _controller: App\Controller\GroupeController::showAllGroupes
+        _api_resource_class: App\Entity\Groupe
+        _api_collection_operation_name: AllGroupes
+
+    listerFormateursGet:
+      path: api/admin/promo/{id}/formateurs
+      methods: ['GET']
+      defaults:
+        _controller: App\Controller\PromoController::getFormateurs
+        _api_resource_class: App\Entity\Groupe
+        _api_item_operation_name: getFormateurs
+
+
+    getApprenantByGrpes:
+      path: api/admin/promos/{idPro}/groupes/{id}/apprenants
+      methods: ['GET']
+      defaults:
+        _controller: App\Controller\PromoController::getApprenantByGrpes
+        _api_resource_class: App\Entity\Promo
+        _api_item_operation_name: getApprntByGrpPromo
+
+
+    get_All_promo_encours:
+      path: api/admin/promo/encours
+      methods: ['GET']
+      defaults:
+        _controller: App\Controller\PromoController::getAllPromoEnCours
+        _api_resource_class: App\Entity\Promo
+        _api_item_operation_name: getAllPromoEnCours
+
+    get_ApprenantByProfilDeSortiePromo:
+      path: api/admin/promo/{idPro}/profilDeSortie/{id}/apprenants
+      methods: ['PUT']
+      defaults:
+        _controller: App\Controller\PromoController::getApprenantByProfilDeSortiePromo
+        _api_resource_class: App\Entity\Promo
+        _api_collection_operation_name: getApprenantByProfilDeSortiePromo
+
+    updateProfilSortieOne:
+      path: api/admin/promo/{id}/apprenants/{idApp}/profilDeSortie
+      methods: ['PUT']
+      defaults:
+        _controller: App\Controller\PromoController::updateProfilSortieOne
+        _api_resource_class: App\Entity\Promo
+        _api_item_operation_name: putProfilSortie
+
+
+    updateProfilSortieAll:
+      path: api/admin/promo/{id}/apprenants/profilDeSortie
+      methods: ['PUT']
+      defaults:
+        _controller: App\Controller\PromoController::updateProfilSortieAll
+        _api_resource_class: App\Entity\Promo
+        _api_item_operation_name: putProfilSortieAll
+
+
+    delete_profil:
+      path: api/admin/profils/{id}
+      methods: ['DELETE']
+      defaults:
+        _controller: App\Controller\PromoController::DeleteProfil
+        _api_resource_class: App\Entity\Profil
+        _api_item_operation_name: deleteProfil
+
+
+    get_profil:
+      path: api/admin/profils
+      methods: ['GET']
+      defaults:
+        _controller: App\Controller\PromoController::getALLProfil
+        _api_resource_class: App\Entity\Profil
+        _api_item_operation_name: getProfil
+
+       
+
+lister_profilSortie:
+  path: api/admin/profilsortie
+  methods: ['GET']
+  defaults:
+    _controller: App\Controller\ProfilSortieController::listerProfilSortie
+    _api_resource_class: App\Entity\ProfilSortie
+    _api_collection_operation_name: get_profilSorties
+
+
+ajouter_profilSortie:
+  path: api/admin/profilsortie
+  methods: ['POST']
+  defaults:
+    _controller: App\Controller\ProfilSortieController::ajouterProfilSortie
+    _api_resource_class: App\Entity\ProfilSortie
+    _api_collection_operation_name: post_ajouterProfilSortie
+
+
+    updateProfilSortie:
+      path: api/admin/profilsortie/{id}
+      methods: ['PUT']
+      defaults:
+        _controller: App\Controller\ProfilSortieController::updateProfilSortie
+        _api_resource_class: App\Entity\ProfilSortie
+        _api_item_operation_name: putProfilSortie
+
+
+    getChatByApprenantDunPromo:
+      path: api/admin/promo/{idPro}/apprenant/{id}/chats
+      methods: ['GET']
+      defaults:
+        _controller: App\Controller\CommentaireGeneralController::getChatByApprenantDunPromo
+        _api_resource_class: App\Entity\CommentaireGeneral
+        _api_item_operation_name: get_ChatByApprenantDunPromo
+
+
+    postChatByApprenantDunPromo:
+      path: api/admin/promo/{idPro}/apprenant/{id}/chats
+      methods: ['POST']
+      defaults:
+        _controller: App\Controller\CommentaireGeneralController::postChatByApprenantDunPromo
+        _api_resource_class: App\Entity\CommentaireGeneral
+        _api_item_operation_name: post_ChatByApprenantDunPromo
+        
+
+    getApprenantPromoByApprenantDunPromo:
+      path: api/admin/promo/{idPro}/profilsorties
+      methods: ['GET']
+      defaults:
+        _controller: App\Controller\ApprenantController::getApprenantPromoByApprenantDunPromo
+        _api_resource_class: App\Entity\Apprenant
+        _api_item_operation_name: get_ApprenantPromoByApprenantDunPromo
+
+    get_profilSortiAndApp:
+      path: api/admin/profilsortie/{id}
+      methods: ['GET']
+      defaults:
+        _controller: App\Controller\ProfilSortieController::getProfilSortieAndApp
+        _api_resource_class: App\Entity\ProfilSortie
+        _api_item_operation_name: get_profilSortiAndApp
+
+    getApprenantDunProfilSortieDunePromo:
+      path: api/admin/promo/{idPro}/profilsortie/{id}
+      methods: ['GET']
+      defaults:
+        _controller: App\Controller\ApprenantController::getApprenantDunProfilSortieDunePromo
+        _api_resource_class: App\Entity\Apprenant
+        _api_item_operation_name: get_ApprenantDunProfilSortieDunePromo
+
+
+        
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
